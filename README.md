@@ -7,7 +7,7 @@
 直接双击 `index.html`，或者开一个本地服务器（方便手机在同一 Wi-Fi 下试玩）：
 
 ```bash
-cd /Users/michael/Desktop/Bella
+cd Bella
 python3 -m http.server 4173
 # 浏览器打开 http://127.0.0.1:4173 （手机用电脑的局域网 IP）
 ```
