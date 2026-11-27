@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#d9f3e6">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="description" content="汪汪消消乐——戴墨镜的金毛、睡不醒的柴犬、神游的哈士奇，和七只狗狗一起三消。">
+  <title>汪汪消消乐 · Bella's Dog Club</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230abab5'/%3E%3Cellipse cx='32' cy='40' rx='12' ry='9' fill='%23fff'/%3E%3Cellipse cx='19' cy='28' rx='5' ry='7' fill='%23fff'/%3E%3Cellipse cx='28' cy='21' rx='5' ry='7' fill='%23fff'/%3E%3Cellipse cx='38' cy='21' rx='5' ry='7' fill='%23fff'/%3E%3Cellipse cx='46' cy='28' rx='5' ry='7' fill='%23fff'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css?v=20261113h">
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-paw" viewBox="0 0 100 100">
+      <ellipse cx="50" cy="68" rx="23" ry="18" fill="currentColor"/>
+      <ellipse cx="25" cy="45" rx="11" ry="15" transform="rotate(-28 25 45)" fill="currentColor"/>
+      <ellipse cx="43" cy="30" rx="11" ry="15" transform="rotate(-7 43 30)" fill="currentColor"/>
+      <ellipse cx="61" cy="29" rx="11" ry="15" transform="rotate(8 61 29)" fill="currentColor"/>
+      <ellipse cx="79" cy="44" rx="11" ry="15" transform="rotate(28 79 44)" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-bone" viewBox="0 0 100 100">
+      <g fill="currentColor" transform="rotate(-30 50 50)">
+        <rect x="22" y="40" width="56" height="20" rx="10"/>
+        <circle cx="24" cy="38" r="11"/><circle cx="24" cy="62" r="11"/>
+        <circle cx="76" cy="38" r="11"/><circle cx="76" cy="62" r="11"/>
+      </g>
+    </symbol>
+    <symbol id="i-star" viewBox="0 0 24 24">
+      <path d="M12 2.6l2.8 5.9 6.4.8-4.7 4.4 1.2 6.4L12 17l-5.7 3.1 1.2-6.4-4.7-4.4 6.4-.8Z" fill="currentColor" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><rect x="6.5" y="5" width="4" height="14" rx="1.6" fill="currentColor"/><rect x="13.5" y="5" width="4" height="14" rx="1.6" fill="currentColor"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13a1 1 0 0 0 1.5.9l10-6.5a1 1 0 0 0 0-1.7l-10-6.5A1 1 0 0 0 8 5.5Z" fill="currentColor"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 24 24"><path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm8.3 4.6-1.9.4a6.8 6.8 0 0 1-.7 1.6l1.1 1.6-1.9 1.9-1.6-1.1a6.8 6.8 0 0 1-1.6.7l-.4 1.9h-2.6l-.4-1.9a6.8 6.8 0 0 1-1.6-.7l-1.6 1.1-1.9-1.9 1.1-1.6a6.8 6.8 0 0 1-.7-1.6l-1.9-.4v-2.6l1.9-.4c.2-.6.4-1.1.7-1.6L4.7 7l1.9-1.9 1.6 1.1c.5-.3 1-.5 1.6-.7l.4-1.9h2.6l.4 1.9c.6.2 1.1.4 1.6.7l1.6-1.1L19.3 7l-1.1 1.6c.3.5.5 1 .7 1.6l1.9.4v2.5Z" fill="currentColor"/></symbol>
+    <symbol id="i-sound" viewBox="0 0 24 24"><path d="M4 9.5v5h3.3l4.2 3.3V6.2L7.3 9.5H4Z" fill="currentColor"/><path d="M14.8 8.2c1.8 1.8 1.8 5.8 0 7.6M17.5 5.7c3.1 3.4 3.1 9.4 0 12.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-mute" viewBox="0 0 24 24"><path d="M4 9.5v5h3.3l4.2 3.3V6.2L7.3 9.5H4Z" fill="currentColor"/><path d="m15 9 5 5m0-5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><path d="M8.8 8.3c.2-2 1.7-3.2 3.6-3.2 2 0 3.5 1.2 3.5 3.1 0 1.7-1 2.5-2.5 3.4-1.3.8-1.8 1.5-1.8 2.8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><circle cx="11.6" cy="18.6" r="1.6" fill="currentColor"/></symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1 2V17h5.2v-1.2c0-.8.4-1.5 1-2A6 6 0 0 0 12 3Z" fill="currentColor"/><rect x="9.4" y="18.4" width="5.2" height="2.6" rx="1.2" fill="currentColor"/></symbol>
+    <symbol id="i-shuffle" viewBox="0 0 24 24"><path d="M4 7h2.6c4.8 0 5.7 10 10.5 10H20M4 17h2.6c1.6 0 2.8-1.1 3.9-2.5m4.5-5.7C16 8 17.1 7 18.4 7H20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="m17.4 4.5 2.2 2.5-2.2 2.5M17.4 14.5l2.2 2.5-2.2 2.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="3" fill="currentColor"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5" fill="none" stroke="currentColor" stroke-width="2.6"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 11.2 12 4.5l8 6.7V19a1.5 1.5 0 0 1-1.5 1.5H15v-5.5H9v5.5H5.5A1.5 1.5 0 0 1 4 19v-7.8Z" fill="currentColor"/></symbol>
+    <symbol id="i-retry" viewBox="0 0 24 24"><path d="M19 12a7 7 0 1 1-2.1-5" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/><path d="M19.5 4.5v4.5H15" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M12 9v4.5l3 2M9.5 2.8h5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-map" viewBox="0 0 24 24"><path d="M9 4 3 6.5v13.5l6-2.5 6 2.5 6-2.5V4l-6 2.5L9 4z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/><path d="M9 4v13.5M15 6.5V20" fill="none" stroke="currentColor" stroke-width="2.2"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13.5 2.5 5 13.5h6l-1 8 8.5-11h-6l1-8Z" fill="currentColor" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.4S3.4 15 3.4 8.8A4.7 4.7 0 0 1 12 6.1a4.7 4.7 0 0 1 8.6 2.7c0 6.2-8.6 11.6-8.6 11.6Z" fill="currentColor"/></symbol>
+    <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 2.6c3.9 4.6 6.3 8.1 6.3 11.1a6.3 6.3 0 0 1-12.6 0c0-3 2.4-6.5 6.3-11.1Z" fill="currentColor"/><path d="M9.2 14.2a3 3 0 0 0 2.4 2.8" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" opacity=".65"/></symbol>
+    <symbol id="i-ball" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.2" fill="currentColor"/><path d="M4.2 8.2c4.2 2 11.4 2 15.6 0M4.2 15.8c4.2-2 11.4-2 15.6 0" fill="none" stroke="#fff" stroke-width="1.9" opacity=".85"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.2 14.6A8.6 8.6 0 0 1 9.4 3.8a8.6 8.6 0 1 0 10.8 10.8Z" fill="currentColor"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.4A2.4 2.4 0 0 1 6.4 3H20v15.7H6.4A2.4 2.4 0 0 0 4 21.1V5.4Z" fill="currentColor"/><path d="M4 18.7a2.4 2.4 0 0 1 2.4-2.4H20" fill="none" stroke="#fff" stroke-width="1.5" opacity=".8"/></symbol>
+    <symbol id="i-shirt" viewBox="0 0 24 24"><path d="m8.2 3.8 3.8 2 3.8-2 4.2 4-3 3.1V20H7v-9.1l-3-3.1 4.2-4Z" fill="currentColor"/></symbol>
+    <symbol id="i-crown" viewBox="0 0 24 24"><path d="m3.6 7.6 4.3 3.2L12 4.4l4.1 6.4 4.3-3.2-2.1 12H5.7l-2.1-12Z" fill="currentColor"/><circle cx="3.6" cy="7.6" r="1.7" fill="currentColor"/><circle cx="20.4" cy="7.6" r="1.7" fill="currentColor"/><circle cx="12" cy="4.4" r="1.7" fill="currentColor"/></symbol>
+    <symbol id="i-flower" viewBox="0 0 24 24"><g fill="currentColor"><circle cx="12" cy="5.8" r="3.5"/><circle cx="18" cy="9.9" r="3.5"/><circle cx="15.7" cy="16.8" r="3.5"/><circle cx="8.3" cy="16.8" r="3.5"/><circle cx="6" cy="9.9" r="3.5"/></g><circle cx="12" cy="11.8" r="3.1" fill="#ffd447"/></symbol>
+  </svg>
+
+  <div class="backdrop" aria-hidden="true">
+    <span class="backdrop__blob backdrop__blob--a"></span>
+    <span class="backdrop__blob backdrop__blob--b"></span>
+    <span class="backdrop__blob backdrop__blob--c"></span>
+  </div>
+
+  <div class="app" id="app">
+
+    <!-- ============================== TITLE ============================== -->
+    <section class="screen screen--title is-active" id="screen-title" data-screen="title" aria-label="首页">
+      <div class="title-sky" aria-hidden="true">
+        <span class="sun"></span>
+        <span class="cloud cloud--1"></span>
+        <span class="cloud cloud--2"></span>
+        <span class="hill hill--back"></span>
+        <span class="hill hill--front"></span>
+      </div>
+
+      <header class="home-top">
+        <div class="home-brand">
+          <h1 class="logo__title logo__title--mini" aria-label="汪汪消消乐"><span>汪</span><span>汪</span><span>消</span><span>消</span><span>乐</span></h1>
+          <p class="home-brand__sub">BELLA'S DOG CLUB</p>
+        </div>
+        <span class="bar__chip home-stars"><svg><use href="#i-star"/></svg><b id="totalStars">0</b></span>
+        <button class="icon-btn icon-btn--sm" data-action="toggle-sound" aria-label="声音">
+          <svg class="on"><use href="#i-sound"/></svg><svg class="off"><use href="#i-mute"/></svg>
+        </button>
+        <button class="icon-btn icon-btn--sm" data-action="open-settings" aria-label="设置"><svg><use href="#i-gear"/></svg></button>
+      </header>
+
+      <div class="home-scroll">
+        <!-- Adventure hero -->
+        <article class="hero" id="hero" data-chapter="beach">
+          <div class="hero__trio" aria-hidden="true">
+            <span class="hero__dog hero__dog--l" data-dog="bernese"></span>
+            <span class="hero__dog hero__dog--r" data-dog="shiba"></span>
+            <span class="hero__dog hero__dog--c" data-dog="shepherd"></span>
+          </div>
+          <div class="hero__body">
+            <span class="hero__tag"><svg><use href="#i-paw"/></svg>主线冒险</span>
+            <p class="hero__chapter" id="heroChapter">第 1 章 · 阳光海滩</p>
+            <h2 class="hero__level" id="heroLevel">第 1 关</h2>
+            <div class="hero__progress"><i id="heroFill"></i></div>
+            <p class="hero__meta" id="heroMeta">★ 0 / 270</p>
+          </div>
+          <div class="hero__actions">
+            <button class="btn btn--primary hero__play" data-action="continue"><svg><use href="#i-play"/></svg><span id="heroPlayText">开始冒险</span></button>
+            <button class="btn btn--soft hero__map" data-action="mode-adventure" aria-label="关卡地图"><svg><use href="#i-map"/></svg><span>地图</span></button>
+          </div>
+        </article>
+
+        <div class="home-head">
+          <h3>今天玩点什么？</h3>
+          <span id="homeGreeting">狗狗们都在等你</span>
+        </div>
+
+        <div class="hub">
+          <button class="hub-card hub-card--timed" data-action="mode-timed">
+            <span class="hub-card__art" data-dog="bernese"></span>
+            <span class="hub-card__tag"><svg><use href="#i-clock"/></svg><span id="hubTimedTag">60 秒</span></span>
+            <strong>限时冲刺</strong>
+            <small>拼手速，炸技能加时</small>
+            <span class="hub-card__meta" id="metaTimed">还没有记录</span>
+          </button>
+          <button class="hub-card hub-card--zen" data-action="mode-zen">
+            <span class="hub-card__art" data-dog="shiba"></span>
+            <span class="hub-card__tag">∞ 放松</span>
+            <strong>悠闲无尽</strong>
+            <small>不限步数，慢慢消</small>
+            <span class="hub-card__meta" id="metaZen">还没有记录</span>
+          </button>
+
+          <button class="hub-card hub-card--versus" data-vs-action="open">
+            <span class="hub-card__art hub-card__art--versus" aria-hidden="true">
+              <span class="vs-face" data-dog="shiba"></span>
+              <b class="vs-mini">VS</b>
+              <span class="vs-face" data-dog="husky"></span>
+            </span>
+            <span class="hub-card__main">
+              <span class="hub-card__tag"><svg><use href="#i-bolt"/></svg>双人</span>
+              <strong>双人竞赛</strong>
+              <small>开个房间，同一张棋盘拼分</small>
+            </span>
+            <span class="daily-status vs-status" id="metaVersus"><b>开房间</b></span>
+          </button>
+
+          <button class="hub-card hub-card--daily" data-action="mode-daily">
+            <span class="hub-card__art" data-dog="shepherd"></span>
+            <span class="hub-card__main">
+              <span class="hub-card__tag"><svg><use href="#i-bolt"/></svg><span id="dailyDate">今日</span></span>
+              <strong>今日巡逻</strong>
+              <span class="daily-goals" id="dailyGoals"></span>
+            </span>
+            <span class="daily-status" id="metaDaily"><b>出发</b></span>
+          </button>
+
+          <button class="hub-card hub-card--raise" data-action="mode-raise">
+            <span class="hub-card__art hub-card__art--raise" id="raiseHubArt"></span>
+            <span class="hub-card__main">
+              <span class="hub-card__tag"><svg><use href="#i-heart"/></svg>养成</span>
+              <strong>狗狗成长屋</strong>
+              <small id="raiseHubMeta">领养一只小狗，陪它从小长大</small>
+            </span>
+            <span class="daily-status raise-status" id="raiseHubStatus"><b>领养</b></span>
+          </button>
+
+          <button class="hub-card hub-card--dex" data-action="go-dex">
+            <span class="dex-stack" id="dexStack"></span>
+            <strong>狗狗图鉴</strong>
+            <small id="dexCount">俱乐部成员</small>
+          </button>
+          <button class="hub-card hub-card--help" data-action="open-help">
+            <span class="hub-card__art hub-card__art--ball" id="helpBall"></span>
+            <strong>怎么玩</strong>
+            <small>技能骨头 · 组合技</small>
+          </button>
+        </div>
+
+        <section class="parade" aria-label="俱乐部成员">
+          <div class="parade__head"><h3>今日营业的狗狗</h3><span>点一下打个招呼</span></div>
+          <div class="parade__lane"><div class="parade__track" id="paradeTrack"></div></div>
+        </section>
+      </div>
+    </section>
+
+    <!-- =============================== MAP =============================== -->
+    <section class="screen screen--map" id="screen-map" data-screen="map" aria-label="关卡地图">
+      <header class="bar bar--float">
+        <button class="icon-btn" data-action="back" aria-label="返回"><svg><use href="#i-back"/></svg></button>
+        <h2 class="bar__title">冒险地图</h2>
+        <span class="bar__chip"><svg><use href="#i-star"/></svg><b id="mapStars">0</b><i id="mapStarsMax">/180</i></span>
+      </header>
+      <div class="map-scroll" id="mapScroll">
+        <div class="map" id="map"></div>
+      </div>
+    </section>
+
+    <!-- =============================== GAME ============================== -->
+    <section class="screen screen--game" id="screen-game" data-screen="game" aria-label="游戏">
+      <div class="game-bg" aria-hidden="true">
+        <div class="gbg-scene">
+          <i class="gbg-sun"></i>
+          <i class="gbg-band"></i>
+          <i class="gbg-band gbg-band--2"></i>
+          <i class="gbg-hill gbg-hill--1"></i>
+          <i class="gbg-hill gbg-hill--2"></i>
+          <i class="gbg-hill gbg-hill--3"></i>
+        </div>
+        <div class="gbg-bokeh"><i style="--x:8%;--y:14%;--s:90px;--d:11s"></i><i style="--x:78%;--y:10%;--s:120px;--d:14s"></i><i style="--x:60%;--y:32%;--s:60px;--d:9s"></i><i style="--x:16%;--y:46%;--s:70px;--d:12s"></i><i style="--x:88%;--y:52%;--s:100px;--d:13s"></i><i style="--x:30%;--y:74%;--s:130px;--d:16s"></i><i style="--x:72%;--y:82%;--s:80px;--d:10s"></i><i style="--x:48%;--y:6%;--s:50px;--d:8s"></i><i style="--x:6%;--y:88%;--s:60px;--d:12s"></i><i style="--x:92%;--y:30%;--s:40px;--d:9s"></i></div>
+        <div class="gbg-deco"><svg style="--x:10%;--y:22%;--s:34px;--r:-14deg;--d:13s"><use href="#i-paw"/></svg><svg style="--x:84%;--y:20%;--s:40px;--r:18deg;--d:15s"><use href="#i-bone"/></svg><svg style="--x:88%;--y:64%;--s:30px;--r:12deg;--d:12s"><use href="#i-paw"/></svg><svg style="--x:6%;--y:62%;--s:36px;--r:-22deg;--d:16s"><use href="#i-bone"/></svg><svg style="--x:24%;--y:92%;--s:28px;--r:10deg;--d:14s"><use href="#i-paw"/></svg><svg style="--x:70%;--y:94%;--s:32px;--r:-8deg;--d:13s"><use href="#i-bone"/></svg><svg style="--x:50%;--y:16%;--s:22px;--r:24deg;--d:17s"><use href="#i-paw"/></svg></div>
+        <div class="gbg-glow"></div>
+      </div>
+      <header class="game-top">
+        <button class="icon-btn" data-action="pause" aria-label="暂停"><svg><use href="#i-pause"/></svg></button>
+        <div class="game-top__title">
+          <span id="gameMode">海滩闯关</span>
+          <strong id="gameLevel">第 1 关</strong>
+        </div>
+        <div class="counter" id="counter">
+          <span class="counter__label" id="counterLabel">步数</span>
+          <strong id="counterValue">20</strong>
+        </div>
+      </header>
+
+      <div class="vs-hud" id="vsHud">
+        <div class="vs-hud__row">
+          <div class="vs-hud__player vs-hud__player--me" id="vsHudMe">
+            <span class="vs-hud__dog" id="vsMeDog"></span>
+            <span class="vs-hud__meta"><b><span id="vsMeName">你</span></b><strong id="vsMeScore">0</strong></span>
+            <i class="vs-hud__crown" aria-hidden="true"><svg><use href="#i-crown"/></svg></i>
+            <em class="vs-hud__gain" id="vsMeGain" aria-hidden="true"></em>
+          </div>
+          <div class="vs-hud__mid">
+            <span aria-hidden="true">VS</span>
+            <small id="vsHudLead" aria-live="polite">同题竞速</small>
+          </div>
+          <div class="vs-hud__player vs-hud__player--rival" id="vsHudRival">
+            <i class="vs-hud__crown" aria-hidden="true"><svg><use href="#i-crown"/></svg></i>
+            <span class="vs-hud__meta"><b><i class="vs-hud__dot" id="vsRivalDot" aria-hidden="true"></i><span id="vsRivalName">对手</span></b><strong id="vsRivalScore">0</strong></span>
+            <span class="vs-hud__dog" id="vsRivalDog"></span>
+            <em class="vs-hud__gain" id="vsRivalGain" aria-hidden="true"></em>
+          </div>
+        </div>
+        <div class="vs-tug" id="vsTug" aria-hidden="true">
+          <span class="vs-tug__me" id="vsTugMe"></span>
+          <span class="vs-tug__knot" id="vsTugKnot"></span>
+        </div>
+      </div>
+
+      <div class="goal" id="goal">
+        <div class="goal__items" id="goalItems"></div>
+        <div class="goal__score">
+          <span>得分</span>
+          <strong id="scoreValue">0</strong>
+          <div class="star-bar" id="starBar">
+            <span class="star-bar__fill" id="starFill"></span>
+            <i data-star="1"><svg><use href="#i-star"/></svg></i>
+            <i data-star="2"><svg><use href="#i-star"/></svg></i>
+            <i data-star="3"><svg><use href="#i-star"/></svg></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="board-zone">
+        <div class="coach" id="coach" aria-live="polite">
+          <span class="coach__dog" id="coachDog" data-dog="golden"></span>
+          <p class="coach__bubble" id="coachText">一起来消消吧！</p>
+        </div>
+        <div class="board" id="board" role="grid" aria-label="狗狗棋盘" tabindex="-1">
+          <div class="board__cells" id="boardCells" aria-hidden="true"></div>
+          <div class="board__tiles" id="tileLayer"></div>
+          <div class="board__beams" id="beamLayer" aria-hidden="true"></div>
+          <canvas class="board__fx" id="fxCanvas" aria-hidden="true"></canvas>
+          <div class="board__float" id="floatLayer" aria-hidden="true"></div>
+          <div class="board__banner" id="banner" aria-live="polite"><span id="bannerKicker">COMBO</span><strong id="bannerText">好棒！</strong></div>
+        </div>
+      </div>
+
+      <footer class="boosters">
+        <button class="booster" data-action="hint" id="hintBtn" aria-label="提示">
+          <span class="booster__icon"><svg><use href="#i-bulb"/></svg></span>
+          <span>提示</span>
+        </button>
+        <button class="power" id="powerBtn" data-action="power" disabled aria-label="汪汪大招">
+          <span class="power__fill" id="powerFill"></span>
+          <span class="power__face" data-dog="husky"></span>
+          <span class="power__text"><b id="powerLabel">汪汪大招</b><i id="powerValue">0%</i></span>
+        </button>
+        <button class="booster" data-action="shuffle" id="shuffleBtn" aria-label="洗牌">
+          <span class="booster__icon"><svg><use href="#i-shuffle"/></svg></span>
+          <span>洗牌 <b class="booster__count" id="shuffleCount">2</b></span>
+        </button>
+      </footer>
+    </section>
+
+    <!-- =============================== DEX =============================== -->
+    <section class="screen screen--dex" id="screen-dex" data-screen="dex" aria-label="狗狗图鉴">
+      <header class="bar">
+        <button class="icon-btn" data-action="back" aria-label="返回"><svg><use href="#i-back"/></svg></button>
+        <h2 class="bar__title">狗狗图鉴</h2>
+        <span class="bar__chip"><svg><use href="#i-paw"/></svg><b>7</b></span>
+      </header>
+      <p class="dex-intro">点一点狗狗，看看它们的不同表情</p>
+      <div class="dex-grid" id="dexGrid"></div>
+    </section>
+
+    <!-- ============================== RAISE ============================== -->
+    <section class="screen screen--raise" id="screen-raise" data-screen="raise" aria-label="狗狗成长屋">
+      <header class="bar">
+        <button class="icon-btn" data-action="back" aria-label="返回"><svg><use href="#i-back"/></svg></button>
+        <h2 class="bar__title">成长小屋</h2>
+        <span class="bar__chip raise-chip" id="raiseChip" hidden><svg><use href="#i-heart"/></svg><b id="raiseChipText">第 1 天</b></span>
+      </header>
+
+      <div class="raise-scroll" id="raiseScroll">
+        <!-- adoption -->
+        <div class="raise-adopt" id="raiseAdopt" hidden>
+          <div class="raise-adopt__hero">
+            <span class="raise-adopt__box" id="raiseBox" aria-hidden="true">
+              <span class="raise-adopt__pup" id="adoptPupA"></span>
+              <span class="raise-adopt__pup" id="adoptPupB"></span>
+              <span class="raise-adopt__pup" id="adoptPupC"></span>
+            </span>
+            <p class="raise-adopt__kicker">ADOPTION DAY</p>
+            <h3>今天，有一只小狗在等你</h3>
+            <p class="raise-adopt__copy">从三只小家伙里选一位，把它带回小屋。之后喂食、玩耍、洗澡、散步、学才艺，陪它从小小一只长成大狗。</p>
+          </div>
+          <div class="raise-picks" id="raisePicks"></div>
+          <p class="raise-adopt__trait" id="raiseTrait">先选一只你喜欢的小狗吧。</p>
+          <div class="raise-adopt__actions">
+            <button class="btn btn--soft" id="raiseReroll"><svg><use href="#i-retry"/></svg><span>换一批</span></button>
+            <button class="btn btn--primary" id="raiseAdoptBtn" disabled><svg><use href="#i-paw"/></svg><span>先选一只</span></button>
+          </div>
+          <p class="raise-adopt__note">领养后会一直陪着你，进度自动保存在这台设备上。</p>
+        </div>
+
+        <!-- main -->
+        <div class="raise-main" id="raiseMain" hidden>
+          <div class="raise-scene" id="raiseScene">
+            <div class="raise-room" id="raiseRoom" aria-hidden="true"></div>
+            <span class="raise-stage-chip" id="raiseStageChip">幼犬期</span>
+            <div class="raise-ring" id="raiseRing"><i></i></div>
+            <button class="raise-pet" id="raisePet" data-mood="def" aria-label="摸摸小狗"></button>
+            <div class="raise-speech" id="raiseSpeech"><b id="raiseSpeechText">汪！</b></div>
+            <canvas class="raise-fx" id="raiseFx" aria-hidden="true"></canvas>
+            <div class="raise-nameplate"><b id="raisePetName">Ginger</b><span id="raisePetMeta">亲密度 Lv.1</span></div>
+          </div>
+
+          <div class="raise-growth">
+            <div class="raise-growth__head">
+              <b id="raiseStageName">幼犬期</b>
+              <span id="raiseXpText">0 / 80</span>
+            </div>
+            <div class="raise-bar raise-bar--growth"><i id="raiseXpFill"></i></div>
+            <div class="raise-stages" id="raiseStages">
+              <span data-stage="0">幼犬</span><i></i><span data-stage="1">少年</span><i></i><span data-stage="2">成年</span>
+            </div>
+            <p id="raiseStageHint">再获得 80 点成长值，就会进入少年期。</p>
+          </div>
+
+          <div class="raise-needs" id="raiseNeeds">
+            <div class="raise-need" data-need="hunger">
+              <span class="raise-need__icon"><svg><use href="#i-bone"/></svg></span>
+              <div class="raise-need__main">
+                <div class="raise-need__top"><b>饱腹</b><span id="needHungerVal">70</span></div>
+                <div class="raise-bar"><i id="needHungerFill"></i></div>
+              </div>
+            </div>
+            <div class="raise-need" data-need="mood">
+              <span class="raise-need__icon"><svg><use href="#i-heart"/></svg></span>
+              <div class="raise-need__main">
+                <div class="raise-need__top"><b>心情</b><span id="needMoodVal">70</span></div>
+                <div class="raise-bar"><i id="needMoodFill"></i></div>
+              </div>
+            </div>
+            <div class="raise-need" data-need="clean">
+              <span class="raise-need__icon"><svg><use href="#i-drop"/></svg></span>
+              <div class="raise-need__main">
+                <div class="raise-need__top"><b>清洁</b><span id="needCleanVal">70</span></div>
+                <div class="raise-bar"><i id="needCleanFill"></i></div>
+              </div>
+            </div>
+            <div class="raise-need" data-need="energy">
+              <span class="raise-need__icon"><svg><use href="#i-bolt"/></svg></span>
+              <div class="raise-need__main">
+                <div class="raise-need__top"><b>精力</b><span id="needEnergyVal">8 / 10</span></div>
+                <div class="raise-bar"><i id="needEnergyFill"></i></div>
+              </div>
+              <button class="raise-rest" id="raiseRest" aria-label="让小狗休息"><svg><use href="#i-moon"/></svg><span>休息</span></button>
+            </div>
+          </div>
+
+          <div class="raise-wish" id="raiseWish">
+            <span class="raise-wish__icon"><svg><use href="#i-star"/></svg></span>
+            <div class="raise-wish__main">
+              <div class="raise-wish__top"><b>今日心愿</b><span id="raiseWishReward">+亲密度</span></div>
+              <p id="raiseWishText">被摸摸 3 次</p>
+              <div class="raise-bar raise-bar--wish"><i id="raiseWishFill"></i></div>
+            </div>
+          </div>
+
+          <div class="raise-actions" id="raiseActions"></div>
+
+          <div class="raise-tricks" id="raiseTricks"></div>
+
+          <div class="raise-more">
+            <button class="raise-more__btn" data-raise-open="album"><svg><use href="#i-book"/></svg><span>成长相册</span></button>
+            <button class="raise-more__btn" data-raise-open="dress"><svg><use href="#i-shirt"/></svg><span>装扮</span></button>
+            <button class="raise-more__btn" data-raise-open="tricks"><svg><use href="#i-star"/></svg><span>才艺</span></button>
+          </div>
+
+          <div class="raise-diary" id="raiseDiary"></div>
+        </div>
+      </div>
+
+      <div class="raise-modal" id="raiseModal" hidden>
+        <div class="raise-modal__scrim" data-raise-modal-close></div>
+        <div class="raise-modal__panel" id="raiseModalPanel" role="dialog" aria-modal="true" aria-labelledby="raiseModalTitle"></div>
+      </div>
+    </section>
+
+    <!-- ============================== SHEETS ============================= -->
+    <div class="sheet-layer" id="sheetLayer" aria-hidden="true">
+      <div class="sheet-scrim" data-action="scrim"></div>
+
+      <!-- sprint board picker -->
+      <div class="sheet sheet--timed" id="sheet-timed" role="dialog" aria-modal="true" aria-labelledby="timedTitle">
+        <button class="sheet__close icon-btn" data-action="close-sheet" aria-label="关闭"><svg><use href="#i-close"/></svg></button>
+        <p class="sheet__kicker" id="timedKicker">60 秒挑战</p>
+        <h3 id="timedTitle">选时长和棋盘</h3>
+        <p class="timed-label">时长</p>
+        <div class="timed-obstacles timed-durations" id="timedDurations" role="radiogroup" aria-label="时长"></div>
+        <div class="timed-preview">
+          <div class="intro-board timed-preview__board" id="timedPreview" role="img"></div>
+          <div class="timed-preview__info">
+            <strong id="timedPreviewName">随机</strong>
+            <small id="timedPreviewMeta"></small>
+            <button class="timed-reroll" data-action="timed-reroll" id="timedReroll"><svg><use href="#i-shuffle"/></svg>换个摆法</button>
+          </div>
+        </div>
+        <p class="timed-label">障碍</p>
+        <div class="timed-obstacles" id="timedObstacles" role="radiogroup" aria-label="障碍"></div>
+        <p class="timed-label">形状</p>
+        <div class="timed-shapes" id="timedShapes" role="radiogroup" aria-label="棋盘形状"></div>
+        <button class="btn btn--primary btn--xl" data-action="timed-start"><svg><use href="#i-play"/></svg><span id="timedStartLabel">开始 60 秒</span></button>
+      </div>
+
+      <!-- level intro -->
+      <div class="sheet" id="sheet-intro" role="dialog" aria-modal="true" aria-labelledby="introTitle">
+        <div class="sheet__portrait" id="introPortrait"></div>
+        <p class="sheet__kicker" id="introKicker">LEVEL 1</p>
+        <h3 id="introTitle">Ruby 的订单</h3>
+        <p class="sheet__copy" id="introCopy"></p>
+        <div class="intro-goals" id="introGoals"></div>
+        <div class="intro-board" id="introBoard" role="img" aria-label="棋盘形状"></div>
+        <div class="intro-meta" id="introMeta"></div>
+        <button class="btn btn--primary btn--xl" data-action="intro-start"><svg><use href="#i-play"/></svg><span>开始</span></button>
+        <button class="btn btn--text" data-action="close-sheet">再想想</button>
+      </div>
+
+      <!-- pause -->
+      <div class="sheet" id="sheet-pause" role="dialog" aria-modal="true" aria-labelledby="pauseTitle">
+        <div class="sheet__portrait" data-dog="shiba"></div>
+        <p class="sheet__kicker">PAUSED</p>
+        <h3 id="pauseTitle">柴犬先睡一会儿</h3>
+        <div class="toggle-list">
+          <label class="toggle"><span>音效</span><input type="checkbox" data-setting="sfx"><i></i></label>
+          <label class="toggle"><span>音乐</span><input type="checkbox" data-setting="music"><i></i></label>
+          <label class="toggle"><span>震动</span><input type="checkbox" data-setting="haptics"><i></i></label>
+        </div>
+        <button class="btn btn--primary btn--xl" data-action="resume"><svg><use href="#i-play"/></svg><span>继续</span></button>
+        <div class="sheet__row">
+          <button class="btn btn--soft" data-action="restart"><svg><use href="#i-retry"/></svg><span>重来</span></button>
+          <button class="btn btn--soft" data-action="quit"><svg><use href="#i-home"/></svg><span>退出</span></button>
+        </div>
+      </div>
+
+      <!-- result -->
+      <div class="sheet sheet--result" id="sheet-result" role="dialog" aria-modal="true" aria-labelledby="resultTitle">
+        <div class="result-rays" aria-hidden="true"></div>
+        <div class="sheet__portrait sheet__portrait--big" id="resultPortrait"></div>
+        <p class="sheet__kicker" id="resultKicker">LEVEL CLEAR</p>
+        <h3 id="resultTitle">汪！完美！</h3>
+        <div class="result-stars" id="resultStars">
+          <span><svg><use href="#i-star"/></svg></span>
+          <span><svg><use href="#i-star"/></svg></span>
+          <span><svg><use href="#i-star"/></svg></span>
+        </div>
+        <p class="sheet__copy" id="resultCopy"></p>
+        <div class="result-stats" id="resultStats"></div>
+        <button class="btn btn--primary btn--xl" data-action="result-primary"><span id="resultPrimaryText">下一关</span></button>
+        <div class="sheet__row">
+          <button class="btn btn--soft" data-action="restart"><svg><use href="#i-retry"/></svg><span>再来</span></button>
+          <button class="btn btn--soft" data-action="result-home"><svg><use href="#i-home"/></svg><span id="resultHomeText">地图</span></button>
+        </div>
+      </div>
+
+      <!-- dog detail -->
+      <div class="sheet sheet--dog" id="sheet-dog" role="dialog" aria-modal="true" aria-labelledby="dogTitle">
+        <button class="sheet__close icon-btn" data-action="close-sheet" aria-label="关闭"><svg><use href="#i-close"/></svg></button>
+        <div class="dog-hero" id="dogHero"></div>
+        <div class="mood-tabs" id="moodTabs" role="tablist">
+          <button role="tab" data-mood="def" aria-selected="true">招牌</button>
+          <button role="tab" data-mood="wow">惊喜</button>
+          <button role="tab" data-mood="joy">开心</button>
+        </div>
+        <p class="sheet__kicker" id="dogBreed">GOLDEN</p>
+        <h3 id="dogTitle">Ruby</h3>
+        <p class="sheet__copy" id="dogTrait"></p>
+        <div class="dog-facts" id="dogFacts"></div>
+      </div>
+
+      <!-- help -->
+      <div class="sheet sheet--help" id="sheet-help" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
+        <button class="sheet__close icon-btn" data-action="close-sheet" aria-label="关闭"><svg><use href="#i-close"/></svg></button>
+        <p class="sheet__kicker">HOW TO PLAY</p>
+        <h3 id="helpTitle">怎么玩</h3>
+        <ol class="how" id="howList">
+          <li><span class="how__art" data-how="swap"></span><div><strong>滑一下，连成三</strong><p>拖动或先后点击两只相邻狗狗交换，3 只同款连成一线就消除。</p></div></li>
+          <li><span class="how__art" data-how="line"></span><div><strong>4 连 → 冲刺骨头</strong><p>清空整行或整列。</p></div></li>
+          <li><span class="how__art" data-how="bomb"></span><div><strong>L / T 形 → 爆爆骨头</strong><p>以自己为中心炸开 5×5。</p></div></li>
+          <li><span class="how__art" data-how="rainbow"></span><div><strong>5 连 → 彩虹球</strong><p>和任意狗狗交换，清空场上所有同款。</p></div></li>
+          <li><span class="how__art how__art--crate" data-how="crate"></span><div><strong>木箱</strong><p>挪不动，也挡住上面掉下来的狗狗。在它旁边消除或用技能炸到就会碎；双层木箱要敲两下。</p></div></li>
+          <li><span class="how__art" data-how="cage"></span><div><strong>狗笼</strong><p>笼子里的狗狗不能交换、不会掉落，但能参与连线。消除一次就打开笼子。</p></div></li>
+          <li><span class="how__art how__art--shape" data-how="shape"></span><div><strong>形状棋盘</strong><p>爱心、钻石、甜甜圈……空洞处没有格子，狗狗会直接穿过去往下掉。</p></div></li>
+          <li><span class="how__art" data-how="power"></span><div><strong>汪汪大招</strong><p>消除会攒能量，满了点一下，场上炸出三颗技能，不耗步数。</p></div></li>
+        </ol>
+        <p class="help-tip">技能骨头点两下也能直接引爆，两颗技能互换还有更大的组合爆炸。</p>
+        <button class="btn btn--primary btn--xl" data-action="close-sheet"><span>知道啦</span></button>
+      </div>
+
+      <!-- settings -->
+      <div class="sheet" id="sheet-settings" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+        <button class="sheet__close icon-btn" data-action="close-sheet" aria-label="关闭"><svg><use href="#i-close"/></svg></button>
+        <p class="sheet__kicker">SETTINGS</p>
+        <h3 id="settingsTitle">设置</h3>
+        <div class="toggle-list">
+          <label class="toggle"><span>音效</span><input type="checkbox" data-setting="sfx"><i></i></label>
+          <label class="toggle"><span>背景音乐</span><input type="checkbox" data-setting="music"><i></i></label>
+          <label class="toggle"><span>震动反馈</span><input type="checkbox" data-setting="haptics"><i></i></label>
+        </div>
+        <button class="btn btn--danger" data-action="reset-progress">清空存档</button>
+        <p class="settings-foot">汪汪消消乐 v2 · 所有狗狗均为手绘矢量</p>
+      </div>
+
+      <!-- confirm -->
+      <div class="sheet sheet--confirm" id="sheet-confirm" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+        <div class="sheet__portrait" data-dog="husky"></div>
+        <h3 id="confirmTitle">确定吗？</h3>
+        <p class="sheet__copy" id="confirmCopy"></p>
+        <div class="sheet__row">
+          <button class="btn btn--soft" data-action="confirm-no">取消</button>
+          <button class="btn btn--danger" data-action="confirm-yes" id="confirmYes">确定</button>
+        </div>
+      </div>
+
+      <!-- versus room -->
+      <div class="sheet sheet--versus" id="sheet-versus" role="dialog" aria-modal="true" aria-labelledby="versusTitle">
+        <button class="sheet__close icon-btn" data-vs="close" aria-label="关闭"><svg><use href="#i-close"/></svg></button>
+
+        <div class="vs-view" data-vs-view="menu">
+          <div class="vs-art" aria-hidden="true">
+            <span class="vs-art__dog vs-art__dog--l" data-dog="shiba"></span>
+            <span class="vs-art__badge">VS</span>
+            <span class="vs-art__dog vs-art__dog--r" data-dog="husky"></span>
+          </div>
+          <p class="sheet__kicker">VERSUS · 同题竞速</p>
+          <h3 id="versusTitle">双人竞赛</h3>
+          <p class="sheet__copy">开一个房间，把房间号发给朋友。两人拿到同一张棋盘、同样的 60 秒，比谁分高。</p>
+          <button class="btn btn--primary btn--xl" data-vs="create"><svg><use href="#i-play"/></svg><span>开一个房间</span></button>
+          <button class="btn btn--soft btn--xl" data-vs="join"><svg><use href="#i-paw"/></svg><span>输入房间号加入</span></button>
+        </div>
+
+        <div class="vs-view" data-vs-view="setup" hidden>
+          <p class="sheet__kicker" id="vsSetupKicker">CREATE ROOM</p>
+          <h3 id="vsSetupTitle">先给自己起个名字</h3>
+          <label class="vs-field"><span>你的昵称</span><input id="vsName" maxlength="10" placeholder="例如：Ruby" autocomplete="off" enterkeyhint="done"></label>
+          <label class="vs-field" data-vs-join-only hidden><span>房间号</span><input id="vsCodeInput" maxlength="4" placeholder="ABCD" autocomplete="off" autocapitalize="characters" spellcheck="false" enterkeyhint="done"></label>
+          <p class="vs-label">选一只代表你的狗狗</p>
+          <div class="vs-dogs" id="vsDogPicker" role="radiogroup" aria-label="选择代表狗狗"></div>
+          <button class="btn btn--primary btn--xl" data-vs="confirm"><svg><use href="#i-play"/></svg><span id="vsConfirmLabel">创建房间</span></button>
+          <p class="vs-status" id="vsSetupStatus" role="status"></p>
+          <button class="btn btn--text" data-vs="back">返回</button>
+        </div>
+
+        <div class="vs-view" data-vs-view="lobby" hidden>
+          <p class="sheet__kicker" id="vsLobbyKicker">ROOM</p>
+          <h3>房间 <span class="vs-code" id="vsRoomCode">ABCD</span></h3>
+          <p class="sheet__copy" id="vsLobbyHint">等待朋友加入…</p>
+          <div class="vs-slots">
+            <div class="vs-slot" id="vsSlotMe"></div>
+            <span class="vs-slot__vs" aria-hidden="true">VS</span>
+            <div class="vs-slot vs-slot--empty" id="vsSlotRival"></div>
+          </div>
+          <button class="vs-copy" data-vs="copy"><svg><use href="#i-ball"/></svg><span id="vsCopyLabel">复制邀请链接</span></button>
+          <button class="btn btn--primary btn--xl" data-vs="start" id="vsStartBtn" disabled><svg><use href="#i-play"/></svg><span>等朋友进来</span></button>
+          <button class="btn btn--text" data-vs="leave">离开房间</button>
+          <p class="vs-conn" id="vsConn" role="status"></p>
+        </div>
+
+        <div class="vs-view" data-vs-view="rejoin" hidden>
+          <p class="sheet__kicker">VERSUS · 比赛还没结束</p>
+          <h3>回到房间 <span class="vs-code" id="vsRejoinCode">ABCD</span>？</h3>
+          <p class="sheet__copy" id="vsRejoinCopy">刚才的比赛还在进行，回去接着打吧。</p>
+          <button class="btn btn--primary btn--xl" data-vs="rejoin"><svg><use href="#i-play"/></svg><span>回到比赛</span></button>
+          <button class="btn btn--text" data-vs="rejoin-drop">放弃这一局</button>
+        </div>
+
+        <div class="vs-view" data-vs-view="offline" hidden>
+          <p class="sheet__kicker">VERSUS</p>
+          <h3>联机还没开通</h3>
+          <p class="sheet__copy">双人竞赛的实时服务还没配置好，先玩单人模式吧。</p>
+          <button class="btn btn--soft btn--xl" data-vs="close">返回</button>
+        </div>
+      </div>
+
+      <!-- versus result -->
+      <div class="sheet sheet--result sheet--vs-result" id="sheet-versus-result" role="dialog" aria-modal="true" aria-labelledby="vsResultTitle">
+        <div class="result-rays" aria-hidden="true"></div>
+        <p class="sheet__kicker" id="vsResultKicker">VERSUS · TIME UP</p>
+        <h3 id="vsResultTitle">对战结果</h3>
+        <div class="vs-result-board">
+          <div class="vs-result-player" id="vsResultMe">
+            <i class="vs-result-crown" aria-hidden="true"><svg><use href="#i-crown"/></svg></i>
+            <span class="vs-result-player__dog" id="vsResultMeDog"></span>
+            <b class="vs-result-player__name" id="vsResultMeName">你</b>
+            <strong class="vs-result-player__score" id="vsResultMeScore">0</strong>
+          </div>
+          <span class="vs-result-vs" aria-hidden="true">VS</span>
+          <div class="vs-result-player vs-result-player--rival" id="vsResultRival">
+            <i class="vs-result-crown" aria-hidden="true"><svg><use href="#i-crown"/></svg></i>
+            <span class="vs-result-player__dog" id="vsResultRivalDog"></span>
+            <b class="vs-result-player__name" id="vsResultRivalName">对手</b>
+            <strong class="vs-result-player__score" id="vsResultRivalScore">—</strong>
+          </div>
+        </div>
+        <p class="sheet__copy" id="vsResultCopy"></p>
+        <button class="btn btn--primary btn--xl" data-vs="rematch" id="vsRematchBtn"><svg><use href="#i-retry"/></svg><span>再来一局</span></button>
+        <button class="btn btn--soft btn--xl" data-vs="home" id="vsHomeBtn"><svg><use href="#i-home"/></svg><span>回到首页</span></button>
+        <p class="vs-wait" id="vsWait">等待对手完成…</p>
+      </div>
+    </div>
+
+    <div class="vs-count" id="vsCount" aria-live="assertive">
+      <div class="vs-count__card">
+        <p class="vs-count__kicker">同题竞速 · 60 秒</p>
+        <div class="vs-count__players" id="vsCountPlayers"></div>
+        <strong class="vs-count__num" id="vsCountNum">3</strong>
+        <p class="vs-count__hint" id="vsCountHint">同一张棋盘，准备好了吗？</p>
+      </div>
+    </div>
+
+    <div class="vs-pause" id="vsPause" role="dialog" aria-modal="true" aria-labelledby="vsPauseTitle">
+      <div class="vs-pause__card">
+        <p class="vs-pause__kicker">PAUSED · 剩 <b id="vsPauseTime">60</b> 秒</p>
+        <div class="vs-pause__players">
+          <div class="vs-pause__side" id="vsPauseMe">
+            <span class="vs-count-face" id="vsPauseMeDog"></span>
+            <b id="vsPauseMeName">你</b>
+            <small id="vsPauseMeState">在线</small>
+          </div>
+          <span class="vs-count-vs" aria-hidden="true">VS</span>
+          <div class="vs-pause__side vs-pause__side--rival" id="vsPauseRival">
+            <span class="vs-count-face" id="vsPauseRivalDog"></span>
+            <b id="vsPauseRivalName">对手</b>
+            <small id="vsPauseRivalState">在线</small>
+          </div>
+        </div>
+        <h3 id="vsPauseTitle">比赛暂停</h3>
+        <p class="vs-pause__copy" id="vsPauseCopy" role="status"></p>
+        <button class="btn btn--primary btn--xl" data-vs="resume" id="vsResumeBtn"><svg><use href="#i-play"/></svg><span>继续比赛</span></button>
+        <button class="btn btn--soft" data-vs="settle" id="vsSettleBtn" hidden><span>不等了，直接结算</span></button>
+        <button class="btn btn--text" data-vs="quit-match" id="vsQuitBtn">退出比赛</button>
+      </div>
+    </div>
+
+    <div class="toast" id="toast" role="status"></div>
+    <div class="confetti" id="confetti" aria-hidden="true"></div>
+  </div>
+
+  <script src="kit.js?v=20261127a"></script>
+  <script src="dogs.js?v=20261112a"></script>
+  <script src="scenery.js?v=20261112a"></script>
+  <script src="raise-art.js?v=20261112b"></script>
+  <script src="raise.js?v=20261112b"></script>
+  <script src="vendor/supabase-2.118.0.min.js?v=20261113e"></script>
+  <script src="versus-config.js?v=20261113e"></script>
+  <script src="game.js?v=20261113h"></script>
+  <script src="versus.js?v=20261113h"></script>
+</body>
+</html>
